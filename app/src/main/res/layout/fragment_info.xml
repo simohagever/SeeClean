@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="left"
+    android:gravity="left"
+
+
+    android:id="@+id/fragmentLayout"
+    android:layout_height="wrap_content"
+    tools:context=".UI.Info.InfoFragment">
+
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bFirst"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/white"
+        android:text="dfjdhkedfh"
+
+        android:textSize="20dp"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/bLast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="dfjdhkedfh"
+        android:textColor="@color/white"></TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bpass"
+        android:layout_marginLeft="20dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/bemail"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="dfjdhkedfh"
+        android:textColor="@color/white"></TextView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bAddress"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:text="dfjdhkedfh"
+        android:textSize="20dp"
+        ></TextView>
+
+
+
+</LinearLayout>

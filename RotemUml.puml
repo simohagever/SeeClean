@@ -1,0 +1,322 @@
+@startuml
+class com.example.lastproject.DB.FireBaseHelper {
+~ FirebaseFirestore db
+~ FirebaseStorage fireStorage
+~ Context context
++ void AddUser(String,String,String,String,String,String)
++ void AddMarker(String,String,String,Bitmap,LatLng,markerAdded)
++ void PlaceMarkers(GoogleMap,markerCreated)
++ void getMarkerInfo(String,MarkerFetched)
+}
+
+
+interface com.example.lastproject.DB.FireBaseHelper$markerAdded {
+~ void onMarkerAdded()
+}
+
+interface com.example.lastproject.DB.FireBaseHelper$markerCreated {
+~ void onMarkersCreated(LinkedList<Marker>)
+}
+
+interface com.example.lastproject.DB.FireBaseHelper$MarkerFetched {
+~ void onMarkerFetched(String,String,String,Uri)
+}
+
+class com.example.lastproject.UI.Info.ModuleInfo {
+~ Context context
+~ Repository repository
+~ SharedPreferences sharedPreferences
+~ SharedPreferences.Editor editor
++ int getUserRowNumberByEmail(String)
++ Cursor FindUserByEmail(String)
++ boolean CredentialsExist()
++ String getCredentials()
++ String getCredentials2()
++ void UpdateData(String,String,String,String,String,String)
++ boolean CheckUps(String,String,String)
+}
+
+
+class com.example.lastproject.UI.Map.ModuleMap {
+~ Repository repository
+~ Context context
++ void PlaceMarkers(GoogleMap,FireBaseHelper.markerCreated)
++ void AddMarker(String,String,String,Bitmap,LatLng,FireBaseHelper.markerAdded)
+}
+
+
+class com.example.lastproject.UI.homePage.HomePage {
+- TextView txName
+- Button back
+~ DrawerLayout drawerLayout
+~ Toolbar toolbar
+~ moduleHomePage md
+- NavigationView navigationView
+~ boolean menuVisible
+# void onCreate(Bundle)
++ void setNavi()
++ boolean onPrepareOptionsMenu(Menu)
++ void onClick(View)
+}
+
+
+class com.example.lastproject.UI.Settings.Settings {
+- NavigationView navigationView
+# void onCreate(Bundle)
++ void onClick(View)
+}
+
+
+class com.example.lastproject.UI.Main.MainActivity {
+- Button btnlogin
+- Repository rp
+~ ActivityResultLauncher<String[]> locationPermissionRequest
+~ moduleLogin md
+- EditText Epass
+- moduleLogin module
+~ SharedPreferences sharedPreferences
+- CheckBox checkBox
+~ SharedPreferences.Editor editor
+# void onCreate(Bundle)
++ void showCustomDialog(View)
++ void onClick(View)
+}
+
+
+class com.example.lastproject.repstory.Repository {
+~ Context context
+~ User user
+- MyDatabaseHelper myDatabaseHelper
+~ FireBaseHelper myFireBaseHelper
++ void getMarkerInfo(String,FireBaseHelper.MarkerFetched)
++ void PlaceMarkers(GoogleMap,FireBaseHelper.markerCreated)
++ void AddMarker(String,String,String,Bitmap,LatLng,FireBaseHelper.markerAdded)
++ void addUser(String,String,String,String,String)
++ void DeleteShare()
++ Cursor FindUserByEmail(String)
++ int getUserRowNumberByEmail(String)
++ void deleteAllData()
++ boolean isExistLogin(String,String)
++ boolean isExistsRegister(String,String,String,int)
++ void updateData(String,String,String,String,String,String)
++ MyDatabaseHelper getMyDatabaseHelper()
+}
+
+
+class com.example.lastproject.UI.Main.moduleLogin {
+~ Repository repository
+~ Context context
+~ SharedPreferences sharedPreferences
+~ SharedPreferences.Editor editor
++ boolean isExistLogin(String,String)
++ void RememberMe(boolean)
++ void SaveUser(EditText,EditText)
++ boolean CredentialsExist()
++ String getSharedEmail()
+}
+
+
+class com.example.lastproject.UI.homePage.moduleHomePage {
+- Repository rp
+- Context context
++ void DeleteShare()
+}
+
+
+class com.example.lastproject.repstory.CurrentUser {
+~ {static} String email
++ {static} void initilizeUser(String)
++ {static} String getEmail()
++ {static} void setEmail(String)
+}
+
+
+class com.example.lastproject.UI.SelectReport.ModuleSelect {
+~ Repository repository
+~ Context context
++ void getMarkerInfo(String,FireBaseHelper.MarkerFetched)
+}
+
+
+class com.example.lastproject.UI.Camera.Camera {
+~ ImageView imageView
+~ Bitmap picture
+~ TextView textT
+~ EditText eDes
+- NavigationView navigationView
+~ boolean menuVisible
+~ Button Bsend
+~ ModuleCamera moduleCamera
+~ ActivityResultLauncher<Intent> ResultLauncher
+# void onCreate(Bundle)
++ void setNavi()
++ boolean onPrepareOptionsMenu(Menu)
++ void onClick(View)
+}
+
+
+class com.example.lastproject.UI.Camera.ModuleCamera {
+~ Repository repository
+~ Context context
+}
+
+class com.example.lastproject.repstory.User {
+- String firstName
+- String lastName
+- String password
+- String email
+- String address
++ String getFirstName()
++ void setFirstName(String)
++ String getLastName()
++ void setLastName(String)
++ String getPassword()
++ void setPassword(String)
++ String getEmail()
++ void setEmail(String)
++ String getAddress()
++ void setAddress(String)
+}
+
+
+class com.example.lastproject.UI.Info.InfoFragmentBottom {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
+~ Button returnToHome
+~ ModuleInfo moduleInfo
+- EditText Fname
++ {static} InfoFragmentBottom newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+
+
+class com.example.lastproject.DB.MyDatabaseHelper {
+- Context context
+- {static} String DATABASE_NAME
+- {static} int DATABASE_VERSION
+- {static} String TABLE_NAME
+- {static} String COLUMN_ID
+- {static} String COLUMN_FNAME
+- {static} String COLUMN_LNAME
+- {static} String COLUMN_PASSWORD
+- {static} String COLUMN_EMAIL
+- {static} String COLUMN_ADDRESS
++ void onCreate(SQLiteDatabase)
++ void onUpgrade(SQLiteDatabase,int,int)
++ boolean isExistsRegister(String,String,String,int)
++ boolean isExistsLogin(String,String)
++ void addItem(String,String,String,String,String)
++ int getUserRowNumberByEmail(String)
++ Cursor FindUserByEmail(String)
+~ Cursor readAllData()
++ void updateData(String,String,String,String,String,String)
+~ void deleteOneRow(String)
++ void deleteAllData()
+}
+
+
+class com.example.lastproject.UI.Map.Map {
+~ SupportMapFragment supportMapFragment
+~ LatLng latLng
+~ Button backHome
+~ ModuleMap module
+~ GoogleMap mMap
+~ FusedLocationProviderClient fusedLocationClient
+# void onCreate(Bundle)
++ void getLastLocation()
++ void onMapReady(GoogleMap)
+}
+
+
+class com.example.lastproject.UI.Settings.ModueSettingsOrUpdate {
+}
+class com.example.lastproject.UI.Register.Register {
+- Button btnSendInformation
+- TextView btnBackToLogin
+~ SharedPreferences sharedPreferences
+- EditText Epass
+- modleRegister mR
+~ CheckBox checkBox
+- EditText EFname1
+# void onCreate(Bundle)
++ void showCustomDialog(View)
++ void onClick(View)
+}
+
+
+class com.example.lastproject.UI.Info.Info {
+- NavigationView navigationView
+- TextView pass
+- TextView email
+- ModuleInfo moduleInfo
+~ FragmentManager fragmentManager
+# void onCreate(Bundle)
++ void onClick(View)
+}
+
+
+class com.example.lastproject.UI.Info.InfoFragment {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
+- TextView pass
+- TextView email
+- ModuleInfo moduleInfo
++ {static} InfoFragment newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+
+
+class com.example.lastproject.UI.Register.modleRegister {
+- Repository rep
+~ Context context
+~ SharedPreferences sharedPreferences
+~ SharedPreferences.Editor editor
++ boolean isExistLogin(String,String)
++ boolean CheckUps(String,String,String)
++ void addUser(String,String,String,String,String)
++ void RememberMe(boolean)
++ void SaveUser(EditText,EditText)
+}
+
+
+class com.example.lastproject.UI.SelectReport.SelectNewReport {
+- Button select
+~ TextView Dtext
+~ ImageView image1
+~ ModuleSelect moduleSelect
+# void onCreate(Bundle)
++ void onClick(View)
+}
+
+
+
+
+com.example.lastproject.DB.FireBaseHelper +.. com.example.lastproject.DB.FireBaseHelper$markerAdded
+com.example.lastproject.DB.FireBaseHelper +.. com.example.lastproject.DB.FireBaseHelper$markerCreated
+com.example.lastproject.DB.FireBaseHelper +.. com.example.lastproject.DB.FireBaseHelper$MarkerFetched
+com.example.lastproject.UI.homePage.OnClickListener <|.. com.example.lastproject.UI.homePage.HomePage
+androidx.appcompat.app.AppCompatActivity <|-- com.example.lastproject.UI.homePage.HomePage
+com.example.lastproject.UI.Settings.OnClickListener <|.. com.example.lastproject.UI.Settings.Settings
+androidx.appcompat.app.AppCompatActivity <|-- com.example.lastproject.UI.Settings.Settings
+com.example.lastproject.UI.Main.OnClickListener <|.. com.example.lastproject.UI.Main.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.lastproject.UI.Main.MainActivity
+com.example.lastproject.UI.Camera.OnClickListener <|.. com.example.lastproject.UI.Camera.Camera
+androidx.appcompat.app.AppCompatActivity <|-- com.example.lastproject.UI.Camera.Camera
+androidx.fragment.app.Fragment <|-- com.example.lastproject.UI.Info.InfoFragmentBottom
+android.database.sqlite.SQLiteOpenHelper <|-- com.example.lastproject.DB.MyDatabaseHelper
+com.google.android.gms.maps.OnMapReadyCallback <|.. com.example.lastproject.UI.Map.Map
+androidx.appcompat.app.AppCompatActivity <|-- com.example.lastproject.UI.Map.Map
+com.example.lastproject.UI.Register.OnClickListener <|.. com.example.lastproject.UI.Register.Register
+androidx.appcompat.app.AppCompatActivity <|-- com.example.lastproject.UI.Register.Register
+com.example.lastproject.UI.Info.OnClickListener <|.. com.example.lastproject.UI.Info.Info
+androidx.appcompat.app.AppCompatActivity <|-- com.example.lastproject.UI.Info.Info
+androidx.fragment.app.Fragment <|-- com.example.lastproject.UI.Info.InfoFragment
+com.example.lastproject.UI.SelectReport.OnClickListener <|.. com.example.lastproject.UI.SelectReport.SelectNewReport
+androidx.appcompat.app.AppCompatActivity <|-- com.example.lastproject.UI.SelectReport.SelectNewReport
+@enduml

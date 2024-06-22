@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Admin.Admin">
+
+
+    <Button
+        android:layout_width="39dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="40dp"
+
+        android:id="@+id/navigation"
+        android:background="@drawable/baseline_menu_24"
+
+        ></Button>
+
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/btnNavigation"
+        android:layout_width="190dp"
+
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="90dp"
+
+
+        app:menu="@menu/main_menu" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/navigation">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+
+            <TextView
+                android:id="@+id/tvDeleteUsers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete all Users:"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"/>
+
+
+            <Button
+                android:layout_below="@+id/tvDeleteUsers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#3498db"
+                android:text="Delete All Users"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:padding="12dp"
+                android:id="@+id/btnDeleteUsers"
+                android:layout_marginTop="15dp"
+                />
+
+
+
+
+            <TextView
+                android:id="@+id/tvDeleteUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete User:"
+                android:layout_marginTop="40dp"
+                android:layout_below="@id/btnDeleteUsers"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/editDeleteUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="user's email you want to delete:"
+                android:layout_marginTop="40dp"
+                android:layout_below="@id/tvDeleteUser"
+                android:textSize="20dp"/>
+
+
+            <Button
+                android:layout_below="@+id/editDeleteUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#3498db"
+                android:text="Delete User by email"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:padding="12dp"
+                android:id="@+id/btnDeleteUser"
+                android:layout_marginTop="15dp"
+                />
+
+
+            <TextView
+                android:id="@+id/tvDeleteMarkers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete all markers:"
+                android:layout_marginTop="40dp"
+                android:layout_below="@id/btnDeleteUser"
+                android:textSize="20dp"/>
+
+
+
+            <Button
+                android:layout_below="@+id/tvDeleteMarkers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#3498db"
+                android:text="Delete All Markers"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:padding="12dp"
+                android:id="@+id/btnDeleteMarkers"
+                android:layout_marginTop="15dp"
+                />
+
+
+            <TextView
+                android:id="@+id/tvDeleteMarker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete a Marker By ID:"
+                android:layout_marginTop="40dp"
+                android:layout_below="@id/btnDeleteMarkers"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/etDeleteMarker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Delete marker:"
+                android:layout_marginTop="40dp"
+                android:layout_below="@id/tvDeleteMarker"
+                android:textSize="20dp"/>
+
+
+            <Button
+                android:layout_below="@+id/etDeleteMarker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#3498db"
+                android:text="Delete Marker"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:padding="12dp"
+                android:id="@+id/btnDeleteMarker"
+                android:layout_marginTop="15dp"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

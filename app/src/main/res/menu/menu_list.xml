@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+
+   >
+
+
+    <item
+
+        app:showAsAction="always"
+        android:id="@+id/MenuL"
+        android:title=""
+        android:icon="@drawable/baseline_menu_24">
+
+
+       <menu>
+
+            <item
+                android:id="@+id/homePage"
+                android:title="home page"
+                android:icon="@drawable/home_page"
+                >
+            </item>
+            <item
+                android:id="@+id/location"
+                android:title="new location"
+                android:icon="@drawable/location"
+                ></item>
+            <item
+                android:id="@+id/picture"
+                android:title="new picture"
+                android:icon="@drawable/picture"
+                ></item>
+            <item
+                android:id="@+id/getOut"
+                android:title="disconnection"
+                android:icon="@drawable/get_out"
+                ></item>
+            <item
+
+                android:id="@+id/info"
+                android:title="info &amp; settings"
+                android:icon="@drawable/info_about"
+                ></item>
+            <item
+                android:id="@+id/settings"
+                android:title="settings"
+                android:icon="@drawable/baseline_settings_24"
+                ></item>
+       </menu>
+
+    </item>
+
+
+
+
+
+
+
+
+
+
+</menu>
